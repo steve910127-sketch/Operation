@@ -61,14 +61,14 @@ def process_shopee_excel_logic(uploaded_file):
         st.success("✔ 蝦皮專線欄位拆解完成！")
 
 
-        st.info("🔄 正在分攤賣場優惠券金額...")
-        # 分攤金額（O欄），根據訂單號（A欄）
+        st.info("🔄 正在分攤賣家負擔優惠券金額...")
+        # 分攤金額（P欄），根據訂單號（A欄）
         # 這裡假設 "訂單編號" 是正確的列名
         if '訂單編號' in df.columns:
-            df['賣場優惠券'] = df.groupby('訂單編號')['賣場優惠券'].transform(lambda x: x / len(x))
-            st.success("✔ 賣場優惠券金額分攤完成！")
+            df['賣家負擔優惠券'] = df.groupby('訂單編號')['賣家負擔優惠券'].transform(lambda x: x / len(x))
+            st.success("✔ 賣家負擔優惠券金額分攤完成！")
         else:
-            st.warning("⚠️ 未找到 '訂單編號' 欄位，跳過賣場優惠券分攤。")
+            st.warning("⚠️ 未找到 '訂單編號' 欄位，跳過賣家負擔優惠券分攤。")
 
 
         st.success("✅ 所有處理步驟完成！")
