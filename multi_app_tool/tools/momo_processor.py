@@ -48,7 +48,7 @@ def process_momo_excel_logic(uploaded_file):
 
         # 固定欄位名稱（請再次確認這些是您的 Excel T 欄和 W 欄的實際標題）
         col_product_name = '商品名稱' # 請根據您的 Excel T 欄實際標題修改
-        col_order_amount = '訂單金額依品項' # 請根據您的 Excel W 欄實際標題修改
+        col_order_amount = '訂單金額' # 請根據您的 Excel W 欄實際標題修改
 
         # 檢查關鍵欄位是否存在
         if col_product_name not in df.columns:
