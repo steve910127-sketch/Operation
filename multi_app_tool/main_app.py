@@ -36,19 +36,13 @@ st.markdown("---")
 st.markdown("由營運部Intern製作～祝大家用的開心")
 
 import pandas as pd
-import io
 
-# 建立範本資料
-buffer = io.BytesIO()
-df_template = pd.DataFrame(columns=['日期', '客服人員', '主要分類', '詳細原因', '案件簡述', '處理狀態'])
+# 建立初始結構
+df = pd.DataFrame(columns=['日期', '客服人員', '主要分類', '詳細原因', '案件簡述', '處理狀態'])
 
-with pd.ExcelWriter(buffer, engine='openpyxl') as writer:
-    df_template.to_excel(writer, index=False)
+# 預設分類
+categories = ['1.到集運站前', '2.在集運倉內', '3.合包寄出後']
 
-# 在網頁上顯示下載按鈕
-st.download_button(
-    label="下載客服統計範本 Excel",
-    data=buffer.getvalue(),
-    file_name="客服紀錄範本.xlsx",
-    mime="application/vnd.ms-excel"
-)
+# 匯出成 Excel
+df.to_excel('客服紀錄範本.xlsx', index=False)
+print("檔案已生成！")
